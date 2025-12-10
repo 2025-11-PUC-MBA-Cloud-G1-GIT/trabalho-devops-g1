@@ -30,7 +30,7 @@ stages:
           az group create --name $(resourceGroupName) --location $(location)
 
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: 'Deploy ARM Template'
+      displayName: 'Deploy ARM Template.'
       inputs:
         deploymentScope: 'Resource Group'
         azureResourceManagerConnection: 'ar01com'  # 🔁 Substitua
