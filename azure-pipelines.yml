@@ -14,8 +14,8 @@ variables:
   vmName: 'vm-iac-web-iis'
   templateFile: 'vm-iis-template.json'
   parametersFile: 'vm-iis-parameters.json'
-  indexUrl: 'https://github.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/tree/main/src/index.html'
-  scriptUrl: 'https://github.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/tree/main/src/scripts/site.ps1' # Verifique se esta URL está correta
+  indexUrl: 'https://raw.githubusercontent.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/main/src/index.html'
+  scriptUrl: 'https://raw.githubusercontent.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/main/src/scripts/site.ps1'
 
 stages:
 - stage: DeployInfra
