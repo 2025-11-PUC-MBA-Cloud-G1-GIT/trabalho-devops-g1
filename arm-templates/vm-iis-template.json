@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -23,6 +24,10 @@
     "windowsOSVersion": {
       "type": "string",
       "defaultValue": "2019-Datacenter"
+    },
+    "publicIpSku": {
+      "type": "string",
+      "defaultValue": "Standard"
     }
   },
   "variables": {
@@ -95,6 +100,9 @@
       "apiVersion": "2021-02-01",
       "name": "[variables('publicIpAddressName')]",
       "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('publicIpSku')]"
+      },
       "properties": {
         "publicIPAllocationMethod": "Static",
         "dnsSettings": {

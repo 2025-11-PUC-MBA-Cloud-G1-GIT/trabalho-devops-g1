@@ -1,13 +1,12 @@
 trigger:
 - main
 
-# pool:
-#   vmImage: 'windows-latest'
-
 pool:
   name: Default # Nome do agent pool
   demands:
     - Agent.Name -equals ag001  # Força o uso do agente específico
+
+  #vmImage: 'windows-latest'
 
 variables:
   location: 'westus3'
@@ -15,8 +14,8 @@ variables:
   vmName: 'vm-iac-web-iis'
   templateFile: 'vm-iis-template.json'
   parametersFile: 'vm-iis-parameters.json'
-  indexUrl: 'https://github.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/tree/main/src/index.html'
-  scriptUrl: 'https://github.com/2025-11-PUC-MBA-Cloud-G1-GIT/trabalho-devops-g1/tree/main/src/scripts/site.ps1' # Verifique se esta URL está correta
+  indexUrl: 'https://raw.githubusercontent.com/lmlpuc/lmlarm003/refs/heads/main/src/index.html'
+  scriptUrl: 'https://raw.githubusercontent.com/lmlpuc/lmlarm003/refs/heads/main/src/scripts/site.ps1' # Verifique se esta URL está correta
 
 stages:
 - stage: DeployInfra
@@ -28,17 +27,17 @@ stages:
     - task: AzureCLI@2
       displayName: 'Criar Resource Group'
       inputs:
-        azureSubscription: 'ar01com'
+        azureSubscription: 'fedb2f1e-f324-4f68-b48d-283ed99ba7ce'  # 🔁 Substitua
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
           az group create --name $(resourceGroupName) --location $(location)
 
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: 'Deploy ARM Template.'
+      displayName: 'Deploy ARM Template'
       inputs:
         deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'ar01com'  # 🔁 Substitua
+        azureResourceManagerConnection: 'ag001'  # 🔁 Substitua
         action: 'Create Or Update Resource Group'
         resourceGroupName: '$(resourceGroupName)'
         location: '$(location)'
@@ -58,7 +57,7 @@ stages:
     - task: AzureCLI@2
       displayName: 'Executar CustomScriptExtension'
       inputs:
-        azureSubscription: 'ar01com'  # 🔁 Substitua
+        azureSubscription: 'fedb2f1e-f324-4f68-b48d-283ed99ba7ce'  # 🔁 Substitua
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
