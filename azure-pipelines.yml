@@ -27,7 +27,7 @@ stages:
     - task: AzureCLI@2
       displayName: 'Criar Resource Group'
       inputs:
-        azureSubscription: 'fedb2f1e-f324-4f68-b48d-283ed99ba7ce'  # 🔁 Substitua
+        azureSubscription: 'ar01com'  # 🔁 Substitua
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
@@ -57,7 +57,7 @@ stages:
     - task: AzureCLI@2
       displayName: 'Executar CustomScriptExtension'
       inputs:
-        azureSubscription: 'fedb2f1e-f324-4f68-b48d-283ed99ba7ce'  # 🔁 Substitua
+        azureSubscription: 'ar01com'  # 🔁 Substitua
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
